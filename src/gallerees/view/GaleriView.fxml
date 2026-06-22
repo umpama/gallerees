@@ -12,7 +12,7 @@
             prefWidth="950" prefHeight="620"
             style="-fx-background-color: #f4f6f9;">
 
-    <!-- ═══════════════════ TOP: Header ═══════════════════ -->
+    <!-- header -->
     <top>
         <VBox alignment="CENTER" spacing="2"
               style="-fx-background-color: linear-gradient(to right, #4568dc, #b06ab3);
@@ -28,7 +28,7 @@
         </VBox>
     </top>
 
-    <!-- ═══════════════════ CENTER: Tabel ═══════════════════ -->
+    <!-- tabel -->
     <center>
         <VBox spacing="8" BorderPane.alignment="CENTER">
             <padding><Insets top="12" right="12" bottom="6" left="12"/></padding>
@@ -52,12 +52,12 @@
         </VBox>
     </center>
 
-    <!-- ═══════════════════ BOTTOM: Form + Preview ═══════════════════ -->
+    <!-- Form + Preview -->
     <bottom>
         <HBox spacing="16">
             <padding><Insets top="6" right="12" bottom="12" left="12"/></padding>
 
-            <!-- ── Form Input ── -->
+            <!-- Form Input -->
             <VBox spacing="10" HBox.hgrow="ALWAYS"
                   style="-fx-background-color: white; -fx-background-radius: 8;
                          -fx-border-color: #dcdcdc; -fx-border-radius: 8;
@@ -66,22 +66,24 @@
                 <Label text="Form Input Aset" style="-fx-font-weight: bold; -fx-font-size: 13;" />
 
                 <GridPane hgap="10" vgap="8">
-                    <!-- Row 0: Nama -->
+                    <!-- Nama -->
                     <Label text="Nama Aset"   GridPane.rowIndex="0" GridPane.columnIndex="0"/>
                     <TextField fx:id="txtNama" GridPane.rowIndex="0" GridPane.columnIndex="1"
                                promptText="Masukkan nama aset" prefWidth="260"/>
 
-                    <!-- Row 1: Tema -->
+                    <!-- Tema -->
                     <Label text="Tema"         GridPane.rowIndex="1" GridPane.columnIndex="0"/>
                     <TextField fx:id="txtTema"  GridPane.rowIndex="1" GridPane.columnIndex="1"
                                promptText="Contoh: Landscape, Portrait"/>
 
-                    <!-- Row 2: Path File -->
+                    <!-- Path File -->
                     <Label text="Path File"         GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-                    <TextField fx:id="txtPathFile"   GridPane.rowIndex="2" GridPane.columnIndex="1"
-                               promptText="C:/images/foto.jpg"/>
+                    <HBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                        <TextField fx:id="txtPathFile" promptText="C:/images/foto.jpg" HBox.hgrow="ALWAYS" prefWidth="200"/>
+                        <Button text="Pilih..." onAction="#onBrowsePath" prefWidth="55" style="-fx-cursor: hand; -fx-background-color: #e9ecef; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-background-radius: 3;"/>
+                    </HBox>
 
-                    <!-- Row 3: Jenis -->
+                    <!-- Jenis -->
                     <Label text="Jenis"              GridPane.rowIndex="3" GridPane.columnIndex="0"/>
                     <ComboBox fx:id="cmbJenis"        GridPane.rowIndex="3" GridPane.columnIndex="1"
                               prefWidth="260"/>
@@ -109,7 +111,7 @@
                 </HBox>
             </VBox>
 
-            <!-- ── Image Preview ── -->
+            <!-- Image Preview -->
             <VBox spacing="6" alignment="TOP_CENTER" minWidth="260"
                   style="-fx-background-color: white; -fx-background-radius: 8;
                          -fx-border-color: #dcdcdc; -fx-border-radius: 8;

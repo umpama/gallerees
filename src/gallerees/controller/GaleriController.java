@@ -13,6 +13,7 @@ import gallerees.model.AsetVisual;
 import gallerees.model.DesainVektor;
 import gallerees.model.FotoKamera;
 
+import javafx.stage.FileChooser;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -82,6 +83,20 @@ public class GaleriController implements Initializable {
     }
 
     // ──────────────────────── Aksi Tombol ───────────────────────
+
+    @FXML
+    private void onBrowsePath() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Pilih Gambar Aset");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp")
+        );
+        File selectedFile = fileChooser.showOpenDialog(txtPathFile.getScene().getWindow());
+        if (selectedFile != null) {
+            txtPathFile.setText(selectedFile.getAbsolutePath().replace("\\", "/"));
+            tampilkanGambar(txtPathFile.getText());
+        }
+    }
 
     @FXML
     private void onSimpan() {
