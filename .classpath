@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="src" path="src" output="bin">
+        <attributes>
+            <attribute name="module" value="true"/>
+        </attributes>
+    </classpathentry>
+
+    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+        <attributes>
+            <attribute name="module" value="true"/>
+        </attributes>
+    </classpathentry>
+
+    <!-- ══════════ JavaFX SDK ══════════ -->
+    <classpathentry kind="lib" path="more/openjfx-26.0.1_windows-x64_bin-sdk/javafx-sdk-26.0.1/lib/javafx.base.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+    <classpathentry kind="lib" path="more/openjfx-26.0.1_windows-x64_bin-sdk/javafx-sdk-26.0.1/lib/javafx.controls.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+    <classpathentry kind="lib" path="more/openjfx-26.0.1_windows-x64_bin-sdk/javafx-sdk-26.0.1/lib/javafx.fxml.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+    <classpathentry kind="lib" path="more/openjfx-26.0.1_windows-x64_bin-sdk/javafx-sdk-26.0.1/lib/javafx.graphics.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+    <classpathentry kind="lib" path="more/openjfx-26.0.1_windows-x64_bin-sdk/javafx-sdk-26.0.1/lib/javafx.media.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+    <classpathentry kind="lib" path="more/openjfx-26.0.1_windows-x64_bin-sdk/javafx-sdk-26.0.1/lib/javafx.swing.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+    <classpathentry kind="lib" path="more/openjfx-26.0.1_windows-x64_bin-sdk/javafx-sdk-26.0.1/lib/javafx.web.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+    <classpathentry kind="lib" path="more/openjfx-26.0.1_windows-x64_bin-sdk/javafx-sdk-26.0.1/lib/javafx-swt.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+
+    <!-- ══════════ MySQL Connector/J ══════════ -->
+    <classpathentry kind="lib" path="more/mysql-connector-j-9.7.0/mysql-connector-j-9.7.0/mysql-connector-j-9.7.0.jar">
+        <attributes><attribute name="module" value="true"/></attributes>
+    </classpathentry>
+
+    <!-- ══════════ Output ══════════ -->
+    <classpathentry kind="output" path="bin"/>
+</classpath>
