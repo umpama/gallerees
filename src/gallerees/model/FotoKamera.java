@@ -1,8 +1,7 @@
 package gallerees.model;
 
 /**
- * Child class yang merepresentasikan aset berjenis Foto Kamera.
- * Menerapkan Polimorfisme melalui Override method getJenis() dan tampilkanDetail().
+ * polimorfisme
  */
 public class FotoKamera extends AsetVisual {
 
