@@ -1,6 +1,6 @@
 package gallerees.model;
 
-/**
+/*
  * polimorfisme
  */
 public class FotoKamera extends AsetVisual {
