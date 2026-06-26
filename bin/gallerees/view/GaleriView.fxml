@@ -79,7 +79,7 @@
                     <!-- Path File -->
                     <Label text="Path File"         GridPane.rowIndex="2" GridPane.columnIndex="0"/>
                     <HBox spacing="5" GridPane.rowIndex="2" GridPane.columnIndex="1">
-                        <TextField fx:id="txtPathFile" promptText="C:/images/foto.jpg" HBox.hgrow="ALWAYS" prefWidth="200"/>
+                    <!--    <TextField fx:id="txtPathFile" promptText="C:/images/foto.jpg" HBox.hgrow="ALWAYS" prefWidth="200"/> -->
                         <Button text="Pilih..." onAction="#onBrowsePath" prefWidth="55" style="-fx-cursor: hand; -fx-background-color: #e9ecef; -fx-border-color: #ced4da; -fx-border-radius: 3; -fx-background-radius: 3;"/>
                     </HBox>
 

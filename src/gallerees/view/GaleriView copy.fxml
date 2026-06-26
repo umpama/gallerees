@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gallerees.controller.GaleriController">
+    <top>
+        <Label text="Gallerees - Manajemen Aset Visual" style="-fx-font-size: 20px; -fx-font-weight: bold;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10" bottom="10" />
+            </padding>
+        </Label>
+    </top>
+    
+    <center>
+        <TableView fx:id="tableAset" prefHeight="400.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+                <TableColumn fx:id="colNama" prefWidth="150.0" text="Nama Aset" />
+                <TableColumn fx:id="colJenis" prefWidth="100.0" text="Jenis" />
+                <TableColumn fx:id="colUkuran" prefWidth="100.0" text="Ukuran (MB)" />
+                <TableColumn fx:id="colPath" prefWidth="200.0" text="Path Gambar" />
+            </columns>
+        </TableView>
+    </center>
+    
+    <right>
+        <VBox spacing="10.0" prefWidth="300.0">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <children>
+                <Label text="Preview Gambar" style="-fx-font-weight: bold;"/>
+                <ImageView fx:id="previewGambar" fitHeight="200.0" fitWidth="280.0" preserveRatio="true" />
+                
+                <Label text="ID Aset" />
+                <TextField fx:id="txtId" promptText="Masukkan ID..." />
+                
+                <Label text="Nama Aset" />
+                <TextField fx:id="txtNama" promptText="Masukkan Nama..." />
+                
+                <Label text="Jenis Aset" />
+                <ComboBox fx:id="cbJenis" prefWidth="280.0" promptText="Pilih Jenis..." />
+                
+                <Label text="Ukuran (MB)" />
+                <TextField fx:id="txtUkuran" promptText="Masukkan Ukuran..." />
+                
+                <Label text="Path Gambar" />
+                <HBox spacing="10.0">
+                    <TextField fx:id="txtPath" promptText="Path gambar..." editable="false" HBox.hgrow="ALWAYS" />
+                    <Button text="Pilih..." onAction="#handlePilihGambar" />
+                </HBox>
+                
+                <HBox spacing="10.0" alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                    <Button text="Tambah" onAction="#handleTambah" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+                    <Button text="Update" onAction="#handleUpdate" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+                    <Button text="Hapus" onAction="#handleHapus" style="-fx-background-color: #f44336; -fx-text-fill: white;" />
+                    <Button text="Clear" onAction="#handleClear" />
+                </HBox>
+            </children>
+        </VBox>
+    </right>
+</BorderPane>

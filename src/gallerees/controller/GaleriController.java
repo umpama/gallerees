@@ -18,79 +18,77 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Controller untuk GaleriView.fxml.
- * Mengelola interaksi antara tampilan dan DAO.
- */
 public class GaleriController implements Initializable {
 
-    // ──────────────────────── FXML Components ───────────────────
+    @FXML
+    private TextField txtNama;
+    @FXML
+    private TextField txtTema;
+    @FXML
+    private TextField txtPathFile;
+    @FXML
+    private ComboBox<String> cmbJenis;
 
-    @FXML private TextField    txtNama;
-    @FXML private TextField    txtTema;
-    @FXML private TextField    txtPathFile;
-    @FXML private ComboBox<String> cmbJenis;
+    @FXML
+    private Button btnSimpan;
+    @FXML
+    private Button btnUbah;
+    @FXML
+    private Button btnHapus;
+    @FXML
+    private Button btnBersihkan;
 
-    @FXML private Button btnSimpan;
-    @FXML private Button btnUbah;
-    @FXML private Button btnHapus;
-    @FXML private Button btnBersihkan;
+    @FXML
+    private TableView<AsetVisual> tabelAset;
+    @FXML
+    private TableColumn<AsetVisual, Integer> colId;
+    @FXML
+    private TableColumn<AsetVisual, String> colNama;
+    @FXML
+    private TableColumn<AsetVisual, String> colTema;
+    @FXML
+    private TableColumn<AsetVisual, String> colJenis;
+    @FXML
+    private TableColumn<AsetVisual, String> colPath;
 
-    @FXML private TableView<AsetVisual>         tabelAset;
-    @FXML private TableColumn<AsetVisual, Integer> colId;
-    @FXML private TableColumn<AsetVisual, String>  colNama;
-    @FXML private TableColumn<AsetVisual, String>  colTema;
-    @FXML private TableColumn<AsetVisual, String>  colJenis;
-    @FXML private TableColumn<AsetVisual, String>  colPath;
-
-    @FXML private ImageView imgPreview;
-
-    // ──────────────────────── Fields ────────────────────────────
+    @FXML
+    private ImageView imgPreview;
 
     private final AsetVisualDAO dao = new AsetVisualDAO();
     private ObservableList<AsetVisual> dataList;
 
-    // ──────────────────────── Initialize ────────────────────────
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Isi pilihan ComboBox
         cmbJenis.setItems(FXCollections.observableArrayList("Foto Kamera", "Desain Vektor"));
         cmbJenis.getSelectionModel().selectFirst();
 
-        // Setup kolom tabel
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNama.setCellValueFactory(new PropertyValueFactory<>("namaAset"));
         colTema.setCellValueFactory(new PropertyValueFactory<>("tema"));
         colJenis.setCellValueFactory(new PropertyValueFactory<>("jenis"));
         colPath.setCellValueFactory(new PropertyValueFactory<>("pathFile"));
 
-        // Muat data awal
         loadData();
 
-        // ─── FITUR KRUSIAL: Listener klik baris tabel ───
+        // listener baris tabel
         tabelAset.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldVal, newVal) -> {
                     if (newVal != null) {
                         isiForm(newVal);
                         tampilkanGambar(newVal.getPathFile());
 
-                        // Polimorfisme — panggil tampilkanDetail() di console
+                        // polimorfism
                         newVal.tampilkanDetail();
                     }
-                }
-        );
+                });
     }
-
-    // ──────────────────────── Aksi Tombol ───────────────────────
 
     @FXML
     private void onBrowsePath() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Pilih Gambar Aset");
         fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp")
-        );
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp"));
         File selectedFile = fileChooser.showOpenDialog(txtPathFile.getScene().getWindow());
         if (selectedFile != null) {
             txtPathFile.setText(selectedFile.getAbsolutePath().replace("\\", "/"));
@@ -100,7 +98,8 @@ public class GaleriController implements Initializable {
 
     @FXML
     private void onSimpan() {
-        if (!validasiInput()) return;
+        if (!validasiInput())
+            return;
 
         AsetVisual aset = buatAsetDariForm();
         dao.insert(aset);
@@ -116,7 +115,8 @@ public class GaleriController implements Initializable {
             showWarning("Pilih data yang ingin diubah di tabel terlebih dahulu.");
             return;
         }
-        if (!validasiInput()) return;
+        if (!validasiInput())
+            return;
 
         AsetVisual aset = buatAsetDariForm();
         aset.setId(selected.getId());
@@ -157,18 +157,16 @@ public class GaleriController implements Initializable {
         tabelAset.getSelectionModel().clearSelection();
     }
 
-    // ──────────────────────── Helper Methods ────────────────────
-
     private void loadData() {
         dataList = FXCollections.observableArrayList(dao.getAll());
         tabelAset.setItems(dataList);
     }
 
     private AsetVisual buatAsetDariForm() {
-        String nama     = txtNama.getText().trim();
-        String tema     = txtTema.getText().trim();
+        String nama = txtNama.getText().trim();
+        String tema = txtTema.getText().trim();
         String pathFile = txtPathFile.getText().trim();
-        String jenis    = cmbJenis.getValue();
+        String jenis = cmbJenis.getValue();
 
         if ("Desain Vektor".equals(jenis)) {
             return new DesainVektor(0, nama, tema, pathFile);
@@ -191,10 +189,6 @@ public class GaleriController implements Initializable {
         cmbJenis.getSelectionModel().selectFirst();
     }
 
-    /**
-     * Menampilkan gambar di ImageView berdasarkan path file lokal.
-     * Dibungkus try-catch agar aman jika path tidak valid.
-     */
     private void tampilkanGambar(String pathFile) {
         try {
             if (pathFile == null || pathFile.isEmpty()) {
@@ -217,9 +211,9 @@ public class GaleriController implements Initializable {
 
     private boolean validasiInput() {
         if (txtNama.getText().trim().isEmpty() ||
-            txtTema.getText().trim().isEmpty() ||
-            txtPathFile.getText().trim().isEmpty() ||
-            cmbJenis.getValue() == null) {
+                txtTema.getText().trim().isEmpty() ||
+                txtPathFile.getText().trim().isEmpty() ||
+                cmbJenis.getValue() == null) {
 
             showWarning("Semua field harus diisi!");
             return false;
