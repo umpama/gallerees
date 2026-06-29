@@ -17,9 +17,15 @@ public abstract class AsetVisual implements Manageable {
     }
 
     public AsetVisual(int id, String namaAset, String tema, String pathFile) {
-        this.id       = id;
+        this.id = id;
         this.namaAset = namaAset;
-        this.tema     = tema;
+        this.tema = tema;
+        this.pathFile = pathFile;
+    }
+
+    public AsetVisual(int id, String tema, String pathFile) {
+        this.id = id;
+        this.tema = tema;
         this.pathFile = pathFile;
     }
 

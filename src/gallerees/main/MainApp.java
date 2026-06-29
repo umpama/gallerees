@@ -11,8 +11,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(
-                getClass().getResource("/gallerees/view/GaleriView.fxml")
-        );
+                getClass().getResource("/gallerees/view/GaleriView.fxml"));
 
         Scene scene = new Scene(root);
         primaryStage.setTitle("Manajemen Galeri Visual");
